@@ -25120,13 +25120,9 @@ var _hoisted_5 = {
 var _hoisted_6 = {
   "class": "shrink-0 flex items-center"
 };
-
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+var _hoisted_7 = {
   "class": "font-semibold text-lg"
-}, "GoGoLink", -1
-/* HOISTED */
-);
-
+};
 var _hoisted_8 = {
   "class": "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
 };
@@ -25380,7 +25376,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('dashboard')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("jet-application-mark class=\"block h-9 w-auto\" /"), _hoisted_7];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("jet-application-mark class=\"block h-9 w-auto\" /"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$inertia.page.props.appName), 1
+      /* TEXT */
+      )];
     }),
     _: 1
     /* STABLE */

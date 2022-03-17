@@ -14,7 +14,7 @@
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
                                     <!--jet-application-mark class="block h-9 w-auto" /-->
-                                    <h1 class="font-semibold text-lg">GoGoLink</h1>
+                                    <h1 class="font-semibold text-lg">{{ $inertia.page.props.appName }}</h1>
                                 </Link>
                             </div>
 
@@ -264,6 +264,7 @@
         data() {
             return {
                 showingNavigationDropdown: false,
+
             }
         },
 
