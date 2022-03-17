@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('short_urls', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('team_id')->index()->nullable();
+
             $table->string('slug')->unique();
             $table->string('redirect_to');
+            $table->integer('visit_count')->default(0);
+
             $table->timestamps();
         });
     }

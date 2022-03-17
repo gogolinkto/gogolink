@@ -20,4 +20,9 @@ class ShortUrl extends Model
 
         return $slug;
     }
+
+    public function getShortenUrl(): string
+    {
+        return route('redirect', ['shortUrl' => $this->slug]);
+    }
 }

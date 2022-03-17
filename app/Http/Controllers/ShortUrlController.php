@@ -5,17 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\ShortUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 
 class ShortUrlController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        //
+        $urls = ShortUrl::where('team_id', \request()->user()->currentTeam->id)
+            ->get()
+            ->map(fn ($url) => [
+                'id' => $url->getKey(),
+                'redirect_to' => $url->redirect_to,
+                'url' => $url->getShortenUrl(),
+                'visit_count' => $url->visit_count,
+            ]);
+
+        return Inertia::render('ShortUrl/Index', compact('urls'));
     }
 
     /**
@@ -45,6 +50,12 @@ class ShortUrlController extends Controller
             'redirect_to' => $request->get('redirect_to'),
             'slug' => $request->get('slug', ShortUrl::newSlug()),
         ]);
+
+        if ($request->user()) {
+            $shortUrl->fill([
+                'team_id' => $request->user()->currentTeam->id,
+            ]);
+        }
 
         $shortUrl->save();
 

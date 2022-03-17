@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\ShortUrl;
-use function Pest\Laravel\get;
 
 it('redirects an existing short url to the desired location')
     ->hasShortUrlWith(['slug' => 'test', 'redirect_to' => 'https://gogolink.local/'])
@@ -11,3 +10,9 @@ it('redirects an existing short url to the desired location')
 it('should return 404 when short url doest not exist')
     ->get('/test')
     ->assertNotFound();
+
+it('should increment visit_count on visit /test')
+    ->hasShortUrlWith(['slug' => 'test', 'redirect_to' => 'https://gogolink.local/'])
+    ->tap(fn () => expect(ShortUrl::firstOrFail())->visit_count->toBe(0))
+    ->get('/test')
+    ->tap(fn () => expect(ShortUrl::firstOrFail())->visit_count->toBe(1));
