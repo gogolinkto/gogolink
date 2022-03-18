@@ -17,16 +17,25 @@
         </div>
         <div class="pb-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <h1 class="font-semibold text-xl pb-6">Currently active</h1>
+                <div class="flex items-center pb-6">
+                    <h1 class="font-semibold text-xl">Currently active</h1>
+                    <p class="text-xs pl-3 pt-2 text-gray-500">Most recent first</p>
+                </div>
                 <div v-if="!urls || urls.length === 0" class="text-gray-400 flex items-center justify-center py-16 border border-dashed rounded-lg border-gray-300">
                     Nothing to show in here
                 </div>
-                <div v-else>
-                    <ul v-for="url in urls" :key="url.id">
-                        <li>
-                            <a :href="url.url" class="hover:text-blue-500 hover:underline">{{url.url}}</a>
-                            - {{ url.redirect_to }} (Visited {{ url.visit_count }} times)</li>
-                    </ul>
+                <div v-else class="grid grid-cols-3 gap-4">
+                    <div v-for="url in urls" :key="url.id" class="border rounded-lg p-6 bg-white">
+                        <div class="flex flex-col items-center pb-2">
+                            <a :href="url.url" class="hover:text-blue-500 font-medium hover:underline">{{url.url}}</a>
+                            <div class="py-2 text-gray-600 text-sm">redirects to</div>
+                            <a :href="url.redirect_to" class="hover:text-blue-500 hover:underline break-all">{{ url.redirect_to }}</a>
+                        </div>
+                        <div class="flex justify-between text-xs border-t -mx-6 pt-4 -mb-2 px-6 mt-6">
+                            <div><button>Copy Url</button></div>
+                            <div>{{ url.visit_count }} time(s) clicked</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

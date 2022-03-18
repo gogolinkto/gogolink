@@ -12,6 +12,7 @@ class ShortUrlController extends Controller
     public function index(): \Inertia\Response
     {
         $urls = ShortUrl::where('team_id', \request()->user()->currentTeam->id)
+            ->orderByDesc('id')
             ->get()
             ->map(fn ($url) => [
                 'id' => $url->getKey(),
