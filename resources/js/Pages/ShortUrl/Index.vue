@@ -11,7 +11,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <form @submit.prevent="addUrl" class="bg-white overflow-hidden flex space-x-6 p-4 rounded-lg">
                     <input v-model="addUrlForm.redirect_to" type="text" placeholder="Enter here the url you want to short: ex. https://google.com/" class="flex-1 rounded-lg border-gray-200">
-                    <button type="submit" class="bg-slate-800 text-white font-medium px-6 rounded-lg">Make it shorter</button>
+                    <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white font-medium px-6 rounded-lg">Make it shorter</button>
                 </form>
             </div>
         </div>
