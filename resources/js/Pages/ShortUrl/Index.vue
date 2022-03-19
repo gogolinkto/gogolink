@@ -9,12 +9,14 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <form @submit.prevent="addUrl" class="bg-white overflow-hidden flex space-x-6 p-4 rounded-lg">
+                <form @submit.prevent="addUrl" class="bg-white overflow-hidden flex space-x-4 p-4 rounded-lg">
                     <input v-model="addUrlForm.redirect_to" type="text" placeholder="Enter here the url you want to short: ex. https://google.com/" class="flex-1 rounded-lg border-gray-200">
+                    <input v-model="addUrlForm.slug" type="text" placeholder="Want a custom slug?" class="w-64 rounded-lg border-gray-200">
                     <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white font-medium px-6 rounded-lg">Make it shorter</button>
                 </form>
             </div>
         </div>
+
         <div class="pb-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex items-center pb-6">
@@ -52,7 +54,11 @@ const addUrlForm = useForm({ redirect_to: '', slug: null });
 
 function addUrl() {
     addUrlForm
-        .transform(({ slug, ...rest }) => ({ ...rest, ...(slug !== null ? { slug } : {}) }))
+        .transform(({ slug, ...rest }) => {
+            const sendSlug = slug !== null && slug.trim().length > 0;
+            return { ...rest, ...(sendSlug ? { slug } : {}) };
+        })
         .post('/short-urls');
+    addUrlForm.reset();
 }
 </script>
