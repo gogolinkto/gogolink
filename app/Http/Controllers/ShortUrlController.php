@@ -105,6 +105,6 @@ class ShortUrlController extends Controller
      */
     public function destroy(ShortUrl $shortUrl)
     {
-        //
+        $shortUrl->delete();
     }
 }

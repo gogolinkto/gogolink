@@ -33,3 +33,14 @@ it('should short a url associated with a team when logged in')
     ->actingAsTestUser()
     ->post('/short-urls', [ 'redirect_to' => 'https://localhost/' ])
     ->tap(fn () => expect(ShortUrl::firstOrFail())->team_id->not()->toBeNull());
+
+test('can delete existing short url without login')
+    ->tap(fn () => ShortUrl::factory()->create())
+    ->delete('/short-urls/1')
+    ->tap(fn () => expect(ShortUrl::count())->toBe(1));
+
+test('can delete existing short url')
+    ->actingAsTestUser()
+    ->tap(fn () => ShortUrl::factory()->create(['team_id' => 1]))
+    ->delete('/short-urls/1')
+    ->tap(fn () => expect(ShortUrl::count())->toBe(0));

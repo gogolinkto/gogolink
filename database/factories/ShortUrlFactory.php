@@ -17,6 +17,7 @@ class ShortUrlFactory extends Factory
     public function definition()
     {
         return [
+            'slug' => $this->faker->slug(4),
             'redirect_to' => $this->faker->url(),
         ];
     }

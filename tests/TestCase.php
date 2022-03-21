@@ -10,9 +10,9 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    public function actingAsTestUser(): self
+    public function actingAsTestUser()
     {
-        return $this->actingAs(User::factory()->withPersonalTeam()->create());
+        return test()->actingAs(User::factory()->withPersonalTeam()->create());
     }
 
     public function hasShortUrlWith(array $attributes, $count = 1)
