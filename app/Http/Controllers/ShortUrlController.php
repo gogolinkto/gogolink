@@ -101,10 +101,12 @@ class ShortUrlController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\ShortUrl  $shortUrl
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(ShortUrl $shortUrl)
     {
         $shortUrl->delete();
+
+        return to_route('short-urls.index');
     }
 }
