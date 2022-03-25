@@ -14,7 +14,7 @@
                 </div>
                 <div class="bg-white p-6 rounded-xl flex flex-col items-center justify-center space-y-2">
                     <h1 class="text-3xl font-medium">{{ visitCount }}</h1>
-                    <span class="text-sm text-gray-400">Total Visits</span>
+                    <span class="text-sm text-gray-400">Total Clicks</span>
                 </div>
                 <div class="border border-dashed border-gray-300 p-6 rounded-xl">
                 </div>

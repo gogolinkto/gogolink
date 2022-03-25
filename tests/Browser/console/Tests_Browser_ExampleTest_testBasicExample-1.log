@@ -1,0 +1,8 @@
+[
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/localhost:3000\/browser-sync\/browser-sync-client.js - Failed to load resource: net::ERR_CONNECTION_REFUSED",
+        "source": "network",
+        "timestamp": 1648203523817
+    }
+]
