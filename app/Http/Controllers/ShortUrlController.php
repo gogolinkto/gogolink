@@ -105,6 +105,8 @@ class ShortUrlController extends Controller
      */
     public function destroy(ShortUrl $shortUrl)
     {
+        $this->authorize('delete', $shortUrl);
+
         $shortUrl->delete();
 
         return to_route('short-urls.index');
