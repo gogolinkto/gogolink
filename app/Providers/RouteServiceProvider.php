@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\RedirectShortUrlController;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -35,6 +36,10 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            Route::middleware('short_url')
+                ->get('/{shortUrl:slug}', RedirectShortUrlController::class)
+                ->name('redirect');
         });
     }
 

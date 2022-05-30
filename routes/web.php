@@ -11,5 +11,3 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::resource('/short-urls', ShortUrlController::class);
 });
-
-Route::get('/{shortUrl:slug}', RedirectShortUrlController::class)->name('redirect');
